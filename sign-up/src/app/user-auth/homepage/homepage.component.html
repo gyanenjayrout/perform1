@@ -1,0 +1,141 @@
+<nav class="navbar navbar-light bg-dark">
+    
+    <div class="container-fluid ">
+        <img src="https://performalytic.com/wp-content/uploads/2022/04/New-Project-54.png" alt="app-logo " style="width: 100px;">
+        <div class="d-flex">
+            <img src="https://performalytic.com/wp-content/uploads/2022/04/New-Project-59.png" alt="img" style="width: 500px;">
+        </div>
+
+    </div>
+
+    
+</nav>
+<!----------->
+<div class="row" style="height: 100%;">
+    <div class="flex-shrink-0 p-3 bg-danger sidebar col-lg-3"  style="width: 280px ;min-height: 72vh">
+      <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+        <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+        <span class="fs-5 fw-semibold"><Details></Details></span>
+      </a>
+      <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed btn-light" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true"  style="width: 100%;">
+            Employee
+          </button>
+          <div class="collapse " id="home-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" >
+              <!-- <li><button (click)="clickAddEmployee()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-dark">Add Employee</button></li> -->
+              <li><button (click)="clickAddEmployee()" type="button"  class="btn btn-dark">Add Employee</button></li> 
+            </ul>
+          </div>
+        </li>
+        
+      </ul>
+
+
+      
+
+    </div>
+
+    
+  <div class="col-lg-9">
+    <div class="tbody">
+      <table class="table mt-3 xyz">
+        <thead>
+            <tr>
+                <th scope="col">employee id</th>
+                <th scope="col">firstname</th>
+                <th scope="col">last name</th>
+                <th scope="col">email id</th>
+                <th scope="col">mobile no</th>
+                <th scope="col">salary</th>
+                <th scope="col">Action</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let row of employeeData">
+                <td>{{row.id}}</td>
+                <td>{{row.firstName}}</td>
+                <td>{{row.lastName}}</td>
+                <td>{{row.email}}</td>
+                <td>{{row.mobile}}</td>
+                <td>{{row.salary}}</td>
+                <td>
+                  <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onEdit(row)" class="btn btn-info mx-2">Edit</button>
+                    <button (click)="deleteEmployee(row)" class="btn btn-danger">Del</button>
+                </td>
+            </tr>
+            
+            
+                
+        </tbody>
+    </table>
+    </div>
+    
+  </div>
+
+</div>
+<div class="b-example-divider "></div>
+
+
+    
+    
+      
+    
+
+<div class="b-example-divider"></div>
+
+
+<!-------------------------->
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Employee details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formvalue">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">First name</label>
+                  <input type="text" formControlName="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Last name</label>
+                  <input type="text" formControlName="lastName" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Email id</label>
+                    <input type="email" formControlName="email" class="form-control" id="exampleInputPassword1">
+                  </div>
+                
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Mobile Number</label>
+                    <input type="number" formControlName="mobile" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Salary</label>
+                    <input type="number" formControlName="salary" class="form-control" id="exampleInputPassword1">
+                  </div>
+                    
+                
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+          <button type="button"  (click)="updateEmployeeDetails()" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>-->
+  
+
