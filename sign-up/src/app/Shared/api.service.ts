@@ -1,13 +1,34 @@
 import { Injectable } from '@angular/core';
 import{HttpClient} from'@angular/common/http';
 import{map} from 'rxjs/operators'
+import { RestApiService } from './rest-api service';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http :HttpClient)
+  userId: string='';
+  password :any= '';
+  // setUser(Email: any, Pwd: any) {
+  //   throw new Error('Method not implemented.');
+  // }
+  // login(request: { uId: any; Pwd: any; }) {
+  //   throw new Error('Method not implemented.');
+  // }
+  setUser(uId: string,Pwd: string) {
+    this.userId = uId;
+    this.password = Pwd
+}
+
+getUserDetails() {
+    return { userId: this.userId, Password: this.password };
+}
+  
+
+  constructor(private http :HttpClient,private restapi:RestApiService)
    { }
 
    postEmploye(data:any)
@@ -51,4 +72,32 @@ export class ApiService {
     }))
 
    }
+
+
+   signup(requestBody: any){
+    return new Promise((resolve,reject)=>{
+      this.restapi.post<any>(``,requestBody).subscribe((data: unknown)=>{
+        resolve(data);
+      },
+          (      err: any)=>{
+        reject(err)
+      });
+    })
+   }
+   login(request: any){
+    return new Promise((resolve,reject)=>{
+      this.restapi.post<any>(` `,request).subscribe((data: unknown)=>{
+        resolve(data);
+      },
+          (      err: any)=>{
+        reject(err)
+      });
+    })
+   }
+
+   
+
+   
+
+
 }

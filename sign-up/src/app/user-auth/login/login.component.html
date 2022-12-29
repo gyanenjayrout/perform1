@@ -3,20 +3,20 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form>
+				<form [formGroup]="signUpForm">
 					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="txt" placeholder="User name" [(ngModel)]="signUpObj.userName">
-					<input type="email" name="email" placeholder="Email" [(ngModel)]="signUpObj.email">
-					<input type="password" name="pswd" placeholder="Password" [(ngModel)]="signUpObj.password">
+					<input type="text" name="username" placeholder="User name"  formControlName="UserId">
+					<input type="email" name="email" placeholder="Email"  formControlName="UserEmail">
+					<input type="password" name="pswd" placeholder="Password"  formControlName="Userpwsd">
 					<button (click)="onSignUp()">Sign up</button>
 				</form>
 			</div>
 
 			<div class="login">
-				<form>
+				<form [formGroup]="LoginForm">
 					<label for="chk" aria-hidden="true">Login</label>
-					<input type="text" name="userName" placeholder="user name" [(ngModel)]="loginObj.userName">
-					<input type="password" name="pswd" placeholder="Password" [(ngModel)]="loginObj.password">
+					<input type="text" name="userName" placeholder="user name"formControlName="UserId">
+					<input type="password" name="pswd" placeholder="Password"  formControlName="Userpwsd">
 					<button (click)="onLogin()">Login</button>
 				</form>
 			</div>

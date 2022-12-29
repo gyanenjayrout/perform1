@@ -1,5 +1,8 @@
 import { Component ,OnInit} from '@angular/core';
 import{Router} from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/Shared/api.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,62 +12,114 @@ import{Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
 
-  signupUsers : any[]=[];
-  signUpObj : any = {
-    userName:'',
-    email : '',
-    password : ''
+  
 
-  };
-  loginObj : any= 
-  {
-    userName:'',
-    password : ''
+  
+  
+  LoginForm: any;
+  signUpForm ! :FormGroup;
+  userdata: any;
+  LoginMessage: boolean = true;
+  
 
-  };
-
-  ngOnInit(): void {
+  // ngOnInit(): void {
     
     
-    const localData = localStorage.getItem('signupUsers ');
-    if(localData != null)
+  //   const localData = localStorage.getItem('signupUsers ');
+  //   if(localData != null)
+  //   {
+  //     this.signupUsers =JSON.parse(localData);
+  //   }
+
+  // }
+
+
+  constructor(private fb:FormBuilder,private router : Router, private LoginServices: ApiService){}
+  ngOnInit() {
+   
+    this.signUpForm = this.fb.group({
+      UserEmail: ['', Validators.required],
+      Userpwsd: ['', Validators.required],
+      userId : ['',Validators.required]
+      
+    })
+
+
+    this.LoginForm = this.fb.group({
+      userId: ['',Validators.required],
+      userpwsd: ['',Validators.required]
+
+    })
+
+
+    
+}
+onSignUp()
     {
-      this.signupUsers =JSON.parse(localData);
+      console.log('enter')
+      const requestBody = {
+        uname: this.signUpForm.value.userId,
+        uemail: this.signUpForm.value.UserEmail,
+        upswd : this.signUpForm.value.Userpwsd
+
+      };
+      this.LoginServices.signup(requestBody).then(
+        (data:any)=>
+        {
+          console.log(data.data,'ddddddddddd')
+          if(data.data[0].OutResponseMessage == "Email already exists.") {
+            alert('you have already SignedUp')
+          }
+          else if(data.data[0].OutResponseMessage == "User Created Successfully."){
+            alert('SignUp Successfully');
+            
+
+          }
+          console.log('requestBody', requestBody) 
+        });
     }
-
-  }
-  onSignUp()
-  {
-    this.signupUsers.push(this.signUpObj);
-    localStorage.setItem('signupUsers',JSON.stringify(this.signupUsers));
-    this.signUpObj = {
-      userName:'',
-      email : '',
-      password : ''
-
-  };
-}
-constructor(private router : Router)
-{
-
-}
+    
 
 
-onLogin() 
+
+onLogin(uId = this.LoginForm.value.UserId, Pwd = this.LoginForm.value.Userpwsd) 
 {
   debugger
 
+  const request ={
+    uId : this.LoginForm.value.UserEmail,
+    Pwd : this.LoginForm.value.Userpwsd
+  }
 
- let isUserExit = this.signupUsers.find(m=>m.userName === this.loginObj.userName && m.password === this.loginObj.password);
-if(isUserExit != undefined)
-{
-  alert('user login succefully');
-  this.router.navigateByUrl('homepage')
+  this.LoginServices.login(request).then(
+    (data:any)=>{
+      this.userdata=data.data;
+      this.userdata = data.data;
+       if (data.data[0].Ivmsg == "NotRegistered") {
+       alert('you have to SignUp first')
+    }
+    else{
+      this.LoginServices.setUser(uId,Pwd)
+         this.router.navigate(['/homepage'])
 
-}
-else{
-  alert('wrong credentials')
-}
+    }
+  }
+  );
+
+
+//  let isUserExit = this.signupUsers.find(m=>m.userName === this.loginObj.userName && m.password === this.loginObj.password);
+// if(isUserExit != undefined)
+// {
+//   alert('user login succefully');
+//   this.router.navigateByUrl('homepage')
+
+// }
+// else{
+//   alert('wrong credentials')
+// }
+
+
+
 }
 
 
@@ -77,3 +132,7 @@ else{
 
   
 }
+
+
+
+

@@ -1,24 +1,14 @@
 {
   "posts": [
     {
-      "id": 7,
-      "firstName": "gyanenjay",
-      "lastName": "Rout",
-      "email": "rout@gmail.com",
-      "mobile": 675678678678,
-      "salary": 6568578687678
-    },
-    {
-      "id": 8,
-      "firstName": "anup",
-      "lastName": "nath",
-      "email": "nath@gmail.com",
-      "mobile": 89789787,
-      "salary": 77789799
+      "id": 2,
+      "firstName": "fdgge",
+      "lastName": "bghr",
+      "email": "efefw",
+      "mobile": 1235,
+      "salary": 124
     }
   ],
-
-  
   "comments": [],
   "profile": {
     "name": "typicode"
