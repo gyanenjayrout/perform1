@@ -104,7 +104,7 @@ onLogin(uId = this.LoginForm.value.UserId, Pwd = this.LoginForm.value.Userpwsd)
 
     }
   }
-  );
+);
 
 
 //  let isUserExit = this.signupUsers.find(m=>m.userName === this.loginObj.userName && m.password === this.loginObj.password);
@@ -118,19 +118,8 @@ onLogin(uId = this.LoginForm.value.UserId, Pwd = this.LoginForm.value.Userpwsd)
 //   alert('wrong credentials')
 // }
 
-
-
 }
 
-
-
-
-
-
-
-
-
-  
 }
 
 
