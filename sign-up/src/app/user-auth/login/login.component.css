@@ -65,7 +65,8 @@ button{
 	cursor: pointer;
 }
 button:hover{
-	background: #6d44b8;
+	background: #ffff00;
+	color: #000;
 }
 .login{
 	height: 460px;
