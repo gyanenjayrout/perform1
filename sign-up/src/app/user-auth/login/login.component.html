@@ -1,13 +1,12 @@
 <div class="topContainer">
     <div class="main">  	
 		<input type="checkbox" id="chk" aria-hidden="true">
-
 			<div class="signup">
-				<form [formGroup]="signUpForm">
+				<form [formGroup]="signUpForm" method="post">
 					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="username" placeholder="User name"  formControlName="UserId">
-					<input type="email" name="email" placeholder="Email"  formControlName="UserEmail">
-					<input type="password" name="pswd" placeholder="Password"  formControlName="Userpwsd">
+					<input type="text" name="uname" placeholder="User name"  formControlName="UserId">
+					<input type="email" name="uemail" placeholder="Email"  formControlName="UserEmail">
+					<input type="password" name="upswd" placeholder="Password"  formControlName="Userpwsd">
 					<button (click)="onSignUp()">Sign up</button>
 				</form>
 			</div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+// import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class RestApiService {
 
 
   // ******************** Surya***************
-  private apiUrl = `${environment.apiUrl}/users`;
+  // private apiUrl = `${environment.apiUrl}/users`;
 
   // httpOptions = {
   //   headers: new HttpHeaders({
@@ -34,7 +34,7 @@ export class RestApiService {
   // };
 
   getUsers() {
-    return this.http.get(`${this.apiUrl}`)
+    // return this.http.get(`${this.apiUrl}`)
     // .pipe(
     //   catchError(this.handleError('getUsers', null))
     // )
